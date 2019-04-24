@@ -1,0 +1,41 @@
+# This Deployment manifest defines:
+# - single-replica deployment of the container image, with label "app: node-hello-world"
+# - Pod exposes port 8080
+# - specify PORT environment variable to the container process
+# Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-node-app
+  template:
+    metadata:
+      labels:
+        app: k8s-node-app
+    spec:
+      containers:
+        - name: k8s-node-app
+          image: eu.gcr.io/khaly-221308/k8s-node-app:v1
+          ports:
+          - containerPort: 8080
+          env:
+          - name: PORT
+            value: "8080"
+          # Readness Probe
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          # Liveness Probe
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
