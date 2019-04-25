@@ -20,6 +20,7 @@ spec:
       containers:
         - name: k8s-node-app
           image: eu.gcr.io/khaly-221308/k8s-node-app:v1
+          imagePullPolicy: Always
           ports:
           - containerPort: 8080
           env:
