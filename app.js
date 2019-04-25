@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 
-
 // Route / => display "hello world"
 app.get('/', (req, res) => {
   res.setHeader("Content-Type", "text/html");
