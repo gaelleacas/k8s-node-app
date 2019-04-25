@@ -5,7 +5,7 @@ const app = express();
 // Route / => display "hello world"
 app.get('/', (req, res) => {
   res.setHeader("Content-Type", "text/html");
-  res.send("<h1>Welcome to Google Kubernetes Engine!</h1>");
+  res.send("<h1>Google Kubernetes Engine is awesome!</h1>");
 });
 
 // healthcheck
