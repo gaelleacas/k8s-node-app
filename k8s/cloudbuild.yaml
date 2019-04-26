@@ -11,4 +11,4 @@ steps:
   - k8s-node-app=eu.gcr.io/$PROJECT_ID/k8s-node-app:$COMMIT_SHA
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=demo-cluster'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster'
